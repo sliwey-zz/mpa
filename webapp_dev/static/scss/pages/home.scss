@@ -1,0 +1,468 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+$colorHeavy: #ff7800;
+$colorEmpty: #5db300;
+$colorTask: #4194ff;
+$colorOff: #aaa;
+
+.overview-wrap{
+    display: flex;
+    margin-top: 20px;
+    overflow: hidden;
+
+    .ov-left,
+    .ov-right{
+        overflow: hidden;
+    }
+
+    .ov-left{
+        flex: 3;
+    }
+
+    .ov-right{
+        flex: 2;
+        margin-left: 5px;
+    }
+}
+
+.car-num{
+    display: flex;
+    height: 150px;
+    background: #fff;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .cn-total{
+        display: table;
+        flex: 0 0 115px;
+        width: 115px;
+        height: 100%;
+        font-size: 18px;
+        line-height: 2;
+        background: #089dc5;
+        color: #fff;
+        border-radius: 5px 0 0 5px;
+
+        .cn-wrap{
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .number-total{
+            font-size: 24px;
+        }
+    }
+
+    .ov-item{
+        position: relative;
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
+
+        &:nth-child(2){
+            color: #5cb300;
+        }
+
+        &:nth-child(3){
+            color: #ff7800;
+        }
+
+        &:nth-child(4){
+            color: #4096fe;
+        }
+
+        &:nth-child(5){
+            color: #ababab;
+        }
+
+        &:before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 10;
+        }
+    }
+
+    .num-ring{
+        width: 110px;
+        height: 110px;
+        margin: 8px auto 5px;
+    }
+}
+
+.exception-num{
+    display: flex;
+    height: 150px;
+    color: #666;
+    background: #fff;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .ov-item{
+        position: relative;
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
+
+        &:nth-child(1) .num-round{
+            background: #e42889;
+        }
+
+        &:nth-child(2) .num-round{
+            background: #bfd514;
+        }
+
+        &:nth-child(3) .num-round{
+            background: #f8bd00;
+        }
+
+        &:nth-child(4) .num-round{
+            background: #0cb5ec;
+        }
+
+        &:before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 10;
+        }
+
+        .num-round{
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin: 15px auto;
+            color: #fff;
+            font-size: 24px;
+            line-height: 90px;
+            border-radius: 50%;
+
+            &.disable{
+                color: #999;
+                background: #ddd;
+            }
+
+            &:after{
+                content: '';
+                display: block;
+                width: 82px;
+                height: 82px;
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                border: 2px solid #fff;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.business-num{
+    background: #fff;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .bn-title{
+        padding: 0 20px;
+        height: 50px;
+        color: $colorCompanyFont;
+        line-height: 50px;
+        font-size: 16px;
+        border-bottom: 1px solid $colorBorder;
+    }
+
+    .bn-total{
+        float: right;
+        font-size: 15px;
+        font-weight: normal;
+    }
+
+    .bn-number{
+        color: #ffa800;
+    }
+
+    .bn-chart{
+        height: 250px;
+    }
+}
+
+.flex-wrap{
+    display: flex;
+}
+
+.statistic-num{
+    flex: 1;
+    background: #fff;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .sn-table{
+        width: 100%;
+        color: #ffa800;
+        text-align: center;
+        font-size: 25px;
+
+        .sn-row{
+            height: 100px;
+            border-bottom: 1px solid $colorBorder;
+
+            &:last-child{
+                border-bottom: 0;
+            }
+        }
+
+        .sn-cell{
+            position: relative;
+            width: 100px;
+            border-right: 1px solid $colorBorder;
+
+            &:first-child{
+                width: 60px;
+                font-size: 14px;
+                color: $colorCompanyFont;
+            }
+
+            &:last-child{
+                border-right: 0;
+            }
+
+            &.cell-corner:before{
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                color: #666;
+                font-size: 12px;
+            }
+        }
+
+        .sn-row:nth-child(3) {
+            .sn-cell:nth-child(2):before{
+                content: '总量(笔)';
+            }
+            .sn-cell:nth-child(3):before{
+                content: '占比';
+            }
+        }
+    }
+}
+
+.com-notice{
+    flex: 0 0 200px;
+    width: 200px;
+    margin-left: 5px;
+    background: #fff;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    &.no-data{
+        background-image: url(../../images/nodata.png);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 60%;
+    }
+
+    .notice-title{
+        height: 50px;
+        color: $colorCompanyFont;
+        line-height: 50px;
+        font-size: 14px;
+        text-align: center;
+        border-bottom: 1px solid $colorBorder;
+    }
+    .notice-list{
+        padding: 5px 10px;
+        font-size: 13px;
+        line-height: 2;
+
+        .notice-item{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:before{
+                content: '';
+                display: inline-block;
+                margin-right: 5px;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #999;
+                vertical-align: middle;
+            }
+        }
+
+        .notice-link{
+            color: #999;
+            text-decoration: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.car-position{
+    margin-top: 10px;
+    background: #fff;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .cp-title{
+        height: 35px;
+        color: $colorCompanyFont;
+        font-size: 14px;
+        text-align: center;
+        line-height: 35px;
+        border-bottom: 1px solid $colorBorder;
+
+        .cp-count{
+            color: #ff7800;
+        }
+    }
+}
+
+.map-wrap{
+    position: relative;
+    padding: 10px;
+
+    .car-map{
+        height: 500px;
+    }
+
+    .car-district{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #666;
+        font-size: 14px;
+
+        .car-district-total{
+            position: relative;
+            padding: 3px 20px;
+            background: #fff;
+            border: 1px solid $colorBorder;
+            border-radius: 5px;
+            line-height: 2;
+            cursor: pointer;
+
+            &:after{
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 15px;
+                right: 7px;
+                border: 5px solid transparent;
+                border-top: 5px solid #ccc;
+                transition: all .3s;
+            }
+
+            &.show:after{
+                transform: rotate(180deg);
+                transform-origin: 50% 25%;
+            }
+
+            &:hover{
+                background: lightblue;
+                color: #fff;
+
+                &:after{
+                    border-top-color: #fff;
+                }
+            }
+        }
+
+        .car-district-list{
+            margin-top: 3px;
+            background: #fff;
+            border: 1px solid $colorBorder;
+            border-radius: 5px;
+            line-height: 2;
+            visibility: hidden;
+            opacity: 0;
+            transform: translate3d(0, -10px ,0);
+            transition: all .3s;
+
+            &.show{
+                visibility: visible;
+                opacity: 1;
+                transform: translate3d(0, 0 ,0);
+            }
+        }
+
+        .car-district-item{
+            padding: 3px 20px;
+            cursor: pointer;
+
+            &:hover{
+                background: lightblue;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.mi-poi{
+    width: 25px;
+    height: 35px;
+
+    &.heavy{
+        background: url(../../images/info_poi_heavy.png?__inline);
+    }
+
+    &.empty{
+        background: url(../../images/info_poi_empty.png?__inline);
+    }
+
+    &.task{
+        background: url(../../images/info_poi_task.png?__inline);
+    }
+
+    &.off{
+        background: url(../../images/info_poi_off.png?__inline);
+    }
+}
+
+.amap-marker-label{
+    border: 1px solid #999;
+}
+
+.mi-label{
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    padding: 2px 5px;
+    background: #fff;
+    border-radius: 3px;
+
+    &.heavy{
+        color: $colorHeavy;
+        border: 1px solid $colorHeavy;
+    }
+
+    &.empty{
+        color: $colorEmpty;
+        border: 1px solid $colorEmpty;
+    }
+
+    &.task{
+        color: $colorTask;
+        border: 1px solid $colorTask;
+    }
+
+    &.off{
+        color: $colorOff;
+        border: 1px solid $colorOff;
+    }
+}

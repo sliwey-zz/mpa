@@ -1,0 +1,117 @@
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin opacity($alpha) {
+  filter: Alpha(opacity=$alpha*100);
+  opacity: $alpha;
+}
+
+@mixin opacityBg($r, $g, $b, $a) {
+  background: rgb($r, $g, $b);
+  filter: Alpha(opacity=$a*100);
+  background: rgba($r, $g, $b, $a);
+}
+
+@mixin arrow {
+  &:before{
+    background: url(../../images/arrow_normal.png?__inline);
+  }
+
+  &.no-data{
+    font-size: 20px;
+
+    &:before,
+    &:after{
+      display: none;
+    }
+  }
+
+  &.up{
+    color: #cc3333;
+    border-color: #cc3333;
+
+    &:before{
+     background: url(../../images/arrow_up.png?__inline);
+    }
+  }
+
+  &.down{
+    color: #80bb54;
+    border-color: #80bb54;
+
+    &:before{
+     background: url(../../images/arrow_down.png?__inline);
+    }
+  }
+}
+
+@mixin loading {
+  &.loading{
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: #fff;
+      z-index: 2;
+    }
+
+    &:after{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      left: 50%;
+      top: 50%;
+      margin-left: -5px;
+      margin-top: -5px;
+      background: #90d7ec;
+      border-radius: 50%;
+      box-shadow: 15px 0 0 #90d7ec, -15px 0 0 #90d7ec;
+      animation: loading 2s infinite;
+      z-index: 2;
+    }
+  }
+}
+
+@mixin loadingRound {
+  &.loading{
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    &:after{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      left: 50%;
+      top: 50%;
+      margin-left: -5px;
+      margin-top: -5px;
+      background: #fff;
+      border: 2px solid #90d7ec;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: loadingRound 1s infinite linear;
+    }
+  }
+}

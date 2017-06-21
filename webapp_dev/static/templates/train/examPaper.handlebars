@@ -1,0 +1,21 @@
+<div class="exam-wrap">
+    <div class="doc-wrap">{{{doc}}}</div>
+    <ul class="question-list">
+        {{#each list}}
+        <li class="question-item">
+            <div class="question-wrap">
+                {{question}}
+            </div>
+            <ul class="answer-list">
+                {{#each options}}
+                <li class="answer-item {{#if isRight}}right{{/if}}">
+                    <label><input class="answer-radio" type="radio" disabled {{#if isRight}}checked{{/if}}>{{option}}</label>
+                </li>
+                {{/each}}
+            </ul>
+        </li>
+        {{/each}}
+    </ul>
+    <p class="train-title">备注：</p>
+    <div class="doc-wrap">{{memo}}</div>
+</div>

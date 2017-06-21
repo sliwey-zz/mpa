@@ -1,0 +1,24 @@
+{{#each list}}
+<div class="listRow-item">
+  <table>
+    <tr>
+      <td>{{name}}&ensp;({{jobType}})</td>
+      <td>{{gender}}</td>
+      <td>{{age}}</td>
+      <td>{{driverType}}驾照</td>
+      <td>从业{{workYear}}年</td>
+      <td>{{mobile}}</td>
+      <td data-tid="{{tid}}" jOffer-id="{{jOfferId}}"><a href="###">{{aStatus}}</a>　　<a href="###" >邀请</a></td>
+    </tr>
+  </table>
+</div>
+<div class="listRow-sub">
+  <ul>
+    <li>{{carType}}</li>
+    <li>{{carYears}}年</li>
+    <li>{{powerType}}</li>
+  </ul>
+  <span>{{time}}</span> 
+  <p>{{memo}}</p>
+</div>
+{{/each}}

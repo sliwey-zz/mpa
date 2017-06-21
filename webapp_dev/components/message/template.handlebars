@@ -1,0 +1,27 @@
+<dt class="message-tmpl-title-placeholder">
+  <p class="message-tmpl-title">通知</p>
+</dt>
+{{#each list1}}
+<dd class="message-tmpl-item" data-id="{{id}}">
+  <span class="message-tmpl-del" data-id="{{id}}">&times;</span>
+  <p class="message-tmpl-content">{{content}}</p>
+</dd>
+{{/each}}
+<dt class="message-tmpl-title-placeholder">
+  <p class="message-tmpl-title">公告</p>
+</dt>
+{{#each list2}}
+<dd class="message-tmpl-item" data-id="{{id}}">
+  <span class="message-tmpl-del" data-id="{{id}}">&times;</span>
+  <p class="message-tmpl-content">{{content}}</p>
+</dd>
+{{/each}}
+<dt class="message-tmpl-title-placeholder">
+  <p class="message-tmpl-title">提醒</p>
+</dt>
+{{#each list3}}
+<dd class="message-tmpl-item" data-id="{{id}}">
+  <span class="message-tmpl-del" data-id="{{id}}">&times;</span>
+  <p class="message-tmpl-content">{{content}}</p>
+</dd>
+{{/each}}

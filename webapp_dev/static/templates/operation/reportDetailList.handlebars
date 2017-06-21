@@ -1,0 +1,40 @@
+<thead>
+    <tr>
+        {{#if isDriver}}<th>司机名称</th>{{/if}}
+        {{#if isVehicle}}<th>车牌号码</th>{{/if}}
+        <th>公司名称</th>
+        <th>日期</th>
+        <th>总业务量(笔)</th>
+        <th>电召总业务量(笔)</th>
+        <th>电召占比(%)</th>
+        <th>总里程(KM)</th>
+        <th>里程利用率(%)</th>
+        <th>营运总里程(KM)</th>
+        <th>空驶总里程(KM)</th>
+        <th>总收入(元)</th>
+        <th>计价总收入(元)</th>
+        <th>电召总收入(元)</th>
+        <th>附加燃油费总收入(元)</th>
+    </tr>
+</thead>
+<tbody>
+    {{#each list}}
+    <tr class="list-row" data-time="{{ymd}}">
+        {{#if driverName}}<td>{{driverName}}</td>{{/if}}
+        {{#if vehicleNumber}}<td>浙BT{{vehicleNumber}}</td>{{/if}}
+        <td>{{corpName}}</td>
+        <td>{{ymd}}</td>
+        <td>{{dispatch}}</td>
+        <td>{{seatDispatch}}</td>
+        <td>{{dispatchRatio}}</td>
+        <td>{{distance}}</td>
+        <td>{{distanceRatio}}</td>
+        <td>{{feeDistance}}</td>
+        <td>{{freeDistance}}</td>
+        <td>{{money}}</td>
+        <td>{{income}}</td>
+        <td>{{seatMoney}}</td>
+        <td>{{baf}}</td>
+    </tr>
+    {{/each}}
+</tbody>

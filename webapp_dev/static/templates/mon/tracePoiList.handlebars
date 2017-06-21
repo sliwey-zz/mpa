@@ -1,0 +1,38 @@
+{{#each list}}
+<li class="result-poi-item" data-cid="{{cid}}">
+    <div class="result-pi-left">
+        <div class="result-pi-address-wrap">
+            <div class="result-pi-address" title="{{title}}" data-cid="{{cid}}">{{address}}</div>
+        </div>
+        <p class="result-pi-btn-group">
+            <span class="result-pi-btn result-pi-ok" data-cid="{{cid}}"></span>
+            <span class="result-pi-btn result-pi-del" data-cid="{{cid}}"></span>
+        </p>
+    </div>
+    <div class="result-pi-right">
+        <div class="result-pi-row">
+            <input class="result-pi-input result-pi-date" type="text" disabled value="{{date}}">
+        </div>
+        <div class="result-pi-row">
+            <div class="result-pi-col">
+                <input class="result-pi-input result-pi-time" type="text" value="{{time}}" maxlength="5">
+            </div>
+            <div class="result-pi-col">
+                <input class="result-pi-input result-pi-range" type="text" value="{{range}}" maxlength="2">
+            </div>
+        </div>
+        <div class="result-pi-row">
+            <div class="result-pi-col">
+                <span class="result-pi-text">半径(米)</span>
+            </div>
+            <div class="result-pi-col">
+                {{#if radius}}
+                    <input class="result-pi-input result-pi-radius" type="text" value="{{radius}}">
+                {{else}}
+                    <input class="result-pi-input result-pi-radius" disabled type="text" value="0">
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</li>
+{{/each}}

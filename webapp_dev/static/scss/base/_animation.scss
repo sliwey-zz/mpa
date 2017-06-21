@@ -1,0 +1,15 @@
+@keyframes loading{
+  50%{box-shadow: -15px 0 0 #90d7ec, 15px 0 0 #90d7ec;}
+}
+
+@keyframes loadingRound{
+  100%{transform: rotate(360deg);}
+}
+
+@keyframes shake{
+  0%{transform: translate3d(0, 0, 0);}
+  25%{transform: translate3d(3px, 0, 0);}
+  50%{transform: translate3d(0, 0, 0);}
+  75%{transform: translate3d(-3px, 0, 0);}
+  100%{transform: translate3d(0, 0, 0);}
+}

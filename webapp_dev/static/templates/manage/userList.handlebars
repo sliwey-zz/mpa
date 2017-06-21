@@ -1,0 +1,46 @@
+{{#if isSolved}}
+<thead>
+    <tr>
+        <th>用户</th>
+        <th>工号</th>
+        <th>所属机构或单位</th>
+        <th>用户角色</th>
+        <th>注册日期</th>
+        <th>有效期</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+</thead>
+<tbody>
+    {{#each list}}
+    <tr class="list-row">
+        {{#each arr}}
+        <td>{{value}}</td>
+        {{/each}}
+        <td><a href="/manage/user/auth" class="list-btn-edit" title="编辑"></a></td>
+    </tr>
+    {{/each}}
+</tbody>
+{{else}}
+<thead>
+    <tr>
+        <th>用户</th>
+        <th>所属机构或单位</th>
+        <th>用户角色</th>
+        <th>手机号码</th>
+        <th>邮箱</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+</thead>
+<tbody>
+    {{#each list}}
+    <tr class="list-row">
+        {{#each arr}}
+        <td>{{value}}</td>
+        {{/each}}
+        <td><a href="/manage/user/review?accountId={{tid}}" class="list-link">去处理</a></td>
+    </tr>
+    {{/each}}
+</tbody>
+{{/if}}

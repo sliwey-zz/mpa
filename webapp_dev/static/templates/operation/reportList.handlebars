@@ -1,0 +1,16 @@
+<thead>
+    <tr>
+        {{#each headList}}
+        <th>{{value}}</th>
+        {{/each}}
+    </tr>
+</thead>
+<tbody>
+    {{#each bodyList}}
+    <tr class="list-row" data-detail="{{detail}}">
+        {{#each list}}
+        <td>{{value}}</td>
+        {{/each}}
+    </tr>
+    {{/each}}
+</tbody>

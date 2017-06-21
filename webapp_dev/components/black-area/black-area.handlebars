@@ -1,0 +1,46 @@
+<div id="blackWrap" class="black-wrap">
+  <div id="blackMap" class="black-map"></div>
+  <div class="black-toolbar">
+    <ul class="black-toolbar-list">
+      <li class="black-toolbar-item ruler" title="测距"></li>
+    </ul>
+    <div class="black-toolbar-time">
+      <span class="black-toolbar-btn circle"></span>
+    </div>
+  </div>
+  <div class="black-search-wrap">
+    <div class="black-search">
+      <input type="text" class="black-search-input" placeholder="请输入地址">
+      <button type="button" class="black-search-btn"></button>
+    </div>
+    <ul class="black-search-list"><!--待插入--></ul>
+  </div>
+  <div class="black-result-wrap {{#if isShow}}show{{/if}}">
+    <p class="black-result-title">剔除区域</p>
+    {{!-- <span class="black-result-del"></span> --}}
+    <ul class="black-result-list">
+      {{#each blackList}}
+      <li class="black-result-item" data-id="{{id}}" data-location="{{location}}" data-radius="{{range}}">
+        <div class="black-result-left">
+          <input class="black-result-input address" type="text" value="{{name}}">
+        </div>
+        <div class="black-result-right">
+          <div class="black-result-row">
+            <div class="black-result-col">
+              <span class="black-result-text">半径(米)</span>
+            </div>
+            <div class="black-result-col">
+              <input class="black-result-input radius" type="text" value="{{range}}">
+            </div>
+          </div>
+          <div class="black-result-row">
+            <span class="black-result-btn poi" data-id="{{id}}" title="定位"></span>
+            <span class="black-result-btn ok" data-id="{{id}}" title="修改"></span>
+            <span class="black-result-btn del" data-id="{{id}}" title="删除"></span>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

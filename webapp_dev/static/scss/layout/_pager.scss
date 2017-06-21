@@ -1,0 +1,88 @@
+.pager{
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    color: #999;
+    font-size: 13px;
+
+    &.hide{
+        visibility: hidden;
+    }
+
+    &-btn{
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        background: #fff;
+        border: 1px solid #ededed;
+        background-repeat: no-repeat;
+        background-position: 5px 5px;
+        outline: none;
+
+        &:nth-of-type(1){
+            background-image: url(../../images/pager_first.png?__inline);
+        }
+
+        &:nth-of-type(2){
+            background-image: url(../../images/pager_prev.png?__inline);
+        }
+
+        &:nth-of-type(3){
+            background-image: url(../../images/pager_next.png?__inline);
+        }
+
+        &:nth-of-type(4){
+            background-image: url(../../images/pager_end.png?__inline);
+        }
+
+        &:hover{
+            border-color: #6fb5e9;
+        }
+    }
+
+    .totalPage{
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: top;
+    }
+
+    &-input{
+        height: 20px;
+        width: 40px;
+        padding: 0;
+        text-align: center;
+        vertical-align: top;
+        border: 1px solid #ededed;
+        outline: none;
+
+        &:focus{
+            border-color: #6fb5e9;
+        }
+    }
+
+    .goBtn{
+        height: 22px;
+        vertical-align: top;
+        background: #fff;
+        border: 1px solid #ededed;
+        outline: none;
+
+        &:hover{
+            border-color: #6fb5e9;
+        }
+    }
+}
+
+#currPage{
+    display: inline-block;
+    height: 20px;
+    min-width: 20px;
+    padding: 0 2px;
+    font-size: 12px;
+    vertical-align: top;
+    text-align: center;
+    line-height: 20px;
+    color: #6fb5e9;
+    border: 1px solid #ededed;
+}

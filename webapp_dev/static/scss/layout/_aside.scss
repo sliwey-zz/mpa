@@ -1,0 +1,58 @@
+.aside{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $widthNav;
+    height: 100%;
+    padding-top: $heightHeader + $heightSubHeader;
+    color: #fff;
+    box-sizing: border-box;
+    z-index: 200;
+    transition: .3s;
+
+    &.full{
+        transform: translate3d(-$widthNav, 0, 0);
+    }
+
+    .nav-list{
+        $height: 30px;
+
+        text-align: center;
+
+        .nav-item{
+            position: relative;
+            height: $height;
+            line-height: $height;
+            margin: 10px 0;
+        }
+
+        .nav-link{
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            font-size: 13px;
+
+            &:hover,
+            &.active{
+                background: #ffa800;
+            }
+
+            &:before{
+                content: '';
+                position: relative;
+                float: left;
+                left: 20px;
+                top: 10px;
+                width: 10px;
+                height: 10px;
+                margin-right: 20px;
+                background: url(../../images/menu_icon.png?__inline);
+            }
+        }
+    }
+}
+
+.aside-company{
+    background: $colorCompany;
+}
+

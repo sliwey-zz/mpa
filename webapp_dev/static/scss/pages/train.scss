@@ -1,0 +1,161 @@
+@import '../base/animation';
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.train{
+
+    &-wrap{
+        position: relative;
+        padding: 20px 100px 100px;
+        background: #fff;
+        border: 1px solid $colorBorder;
+        border-radius: 5px;
+    }
+
+    &-title{
+        margin: 10px 0;
+    }
+}
+
+.question{
+
+    &-wrap{
+        position: relative;
+        padding-left: 20px;
+        padding-right: 30px;
+        counter-increment: count;
+
+        &:before{
+            content: counter(count) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 24px;
+            line-height: 24px;
+        }
+    }
+
+    &-add{
+        margin-bottom: 10px;
+    }
+
+    &-list{
+        margin-bottom: 20px;
+        counter-reset: count 0;
+        font-size: 14px;
+    }
+
+    &-title{
+        width: 100%;
+        height: 24px;
+        text-indent: 5px;
+        box-sizing: border-box;
+    }
+
+    &-del{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 24px;
+    }
+
+    &-submit{
+        display: block;
+        margin: 30px auto 0;
+    }
+}
+
+.answer{
+
+    &-list{
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    &-item{
+        height: 24px;
+        margin-bottom: 10px;
+        overflow: hidden;
+
+        &.right{
+            color: #1dce13;
+        }
+    }
+
+    &-radio{
+        position: relative;
+        float: left;
+        margin: 0;
+        margin-right: 5px;
+        left: 0;
+        top: 6px;
+    }
+
+    &-title{
+        float: left;
+        width: 300px;
+        height: 24px;
+        margin-right: 5px;
+        box-sizing: border-box;
+    }
+
+    &-del{
+        float: left;
+        height: 24px;
+    }
+}
+
+.list-wrap{
+    position: relative;
+    min-height: 500px;
+    margin-top: 10px;
+    padding: 10px;
+    padding-bottom: 60px;
+    background: #fff;
+    font-size: 13px;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .list-table{
+        width: 100%;
+        border-top: 1px solid $colorBorder;
+
+        tr{
+            height: 40px;
+            border-bottom: 1px solid $colorBorder;
+        }
+
+        th{
+            background: #eaf0f5;
+            color: #888;
+            font-weight: normal;
+        }
+
+        td{
+            color: #aaa;
+            text-align: center;
+        }
+
+        .list-row{
+            cursor: pointer;
+
+            &:hover{
+                background: #fdfdea;
+            }
+        }
+    }
+}
+
+.exam-wrap{
+    padding: 20px;
+}
+
+.doc-wrap{
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}

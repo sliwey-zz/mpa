@@ -1,0 +1,92 @@
+.header{
+    position: absolute;
+    left: 0;
+    top: $heightSubHeader;
+    width: 100%;
+    height: $heightHeader;
+    min-width: $minWidth;
+    color: #fff;
+    background: #333;
+    font-size: 14px;
+    line-height: $heightHeader;
+    box-sizing: border-box;
+    z-index: 500;
+    transition: .3s;
+
+    @include clearfix;
+
+    &.full{
+        transform: translate3d(0, -$heightHeader - $heightSubHeader, 0);
+    }
+
+    h1{
+        float: left;
+        left: 0;
+        margin: 0 20px;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    &-menu{
+        position: relative;
+        float: left;
+
+        @include clearfix;
+    }
+
+    .hm-item{
+        float: left;
+        width: 95px;
+        text-align: center;
+    }
+
+    .hm-link{
+        display: block;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &.header-company .hm-link{
+
+        &:hover,
+        &.active{
+            background: $colorCompany;
+        }
+    }
+
+}
+
+.top{
+    position: absolute;
+    width: 100%;
+    height: $heightSubHeader;
+    left: 0;
+    top: 0;
+    background: #ddd;
+    color: #666;
+    font-size: 14px;
+    line-height: $heightSubHeader;
+    text-indent: 20px;
+    z-index: 500;
+    transition: .3s;
+
+    &-right{
+        float: right;
+        position: relative;
+        right: 20px;
+    }
+
+    &-logout{
+        margin-left: 10px;
+        color: #666;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    &.full{
+        transform: translate3d(0, -$heightSubHeader, 0);
+    }
+}

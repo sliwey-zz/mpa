@@ -1,0 +1,512 @@
+@import '../base/animation';
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.filter-wrap{
+  height: 55px;
+  padding: 0 15px;
+  background: #fff;
+  font-size: 14px;
+  color: $colorCompanyFont;
+  line-height: 55px;
+  border: 1px solid $colorBorder;
+  border-radius: 5px;
+
+  .filter-search{
+    width: 330px;
+    margin: 0 auto;
+  }
+
+  .filter-select{
+    width: 110px;
+    height: 26px;
+    margin-left: 5px;
+    margin-right: 15px;
+    line-height: 1;
+  }
+
+  .filter-btn{
+    height: 30px;
+    margin-right: 5px;
+    padding: 0 5px;
+    color: #fff;
+    background: #c3c3c3;
+    font-size: 13px;
+    line-height: 30px;
+    border: 0;
+    border-radius: 5px;
+
+    &.active{
+      background: #42a9e2;
+    }
+  }
+}
+
+.list-wrap{
+  position: relative;
+  min-height: 500px;
+  margin-top: 10px;
+  padding: 10px;
+  padding-bottom: 60px;
+  background: #fff;
+  font-size: 13px;
+  border: 1px solid $colorBorder;
+  border-radius: 5px;
+
+  .alphabet-list{
+    display: flex;
+    height: 30px;
+    margin-bottom: 10px;
+    color: #888;
+    line-height: 30px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .alphabet-item{
+    flex: 1;
+  }
+
+  .alphabet-letter{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 0;
+    transition: all .3s;
+
+    &:hover,
+    &.active{
+      color: #fff;
+      background: #90d7ec;
+      border-radius: 50%;
+    }
+  }
+
+  .list-table{
+    width: 100%;
+    border-top: 1px solid $colorBorder;
+
+    tr{
+      height: 40px;
+      border-bottom: 1px solid $colorBorder;
+    }
+
+    th{
+      background: #eaf0f5;
+      color: #888;
+      font-weight: normal;
+    }
+
+    td{
+      max-width: 300px;
+      padding: 0 10px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .list-row{
+      cursor: pointer;
+
+      &:hover{
+        background: #fdfdea;
+      }
+    }
+
+    .list-link{
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      color: $colorLink;
+      text-decoration: none;
+    }
+  }
+
+  &.loading{
+
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: rgba(255, 255, 255, .5);
+      z-index: 10;
+    }
+
+    &:after{
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      top: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
+      border: 5px solid #43aad8;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: loadingRound .6s infinite linear;
+    }
+  }
+
+  .list-btn-group{
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    font-size: 0;
+
+    .list-btn{
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      padding: 0;
+      background-color: #fff;
+      border: 0;
+      outline: 0;
+
+      &.export{
+        background-image: url(../../images/export.png?__inline);
+      }
+    }
+  }
+}
+
+.info-wrap{
+  padding-bottom: 15px;
+  background: #fff;
+  border: 1px solid $colorBorder;
+  border-radius: 5px;
+}
+
+.bd-tabbar{
+  position: relative;
+  display: flex;
+  margin: 0 3px;
+  padding: 0 120px;
+  border-bottom: 10px solid #dfdfdf;
+
+  &:before, &:after{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    bottom: -10px;
+  }
+
+  &:before{
+    left: 20px;
+    border-left: 5px solid #fff;
+    border-right: 15px solid #fff;
+  }
+
+  &:after{
+    right: 20px;
+    border-left: 15px solid #fff;
+    border-right: 5px solid #fff;
+  }
+
+  .bd-tabbar-item{
+    position: relative;
+    flex: 1;
+    height: 80px;
+    margin-bottom: -10px;
+    color: #bbb;
+    font-size: 16px;
+    line-height: 80px;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 10px solid #dfdfdf;
+    cursor: pointer;
+
+    &:after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      width: 30px;
+      height: 30px;
+      margin-left: -15px;
+      background: #dfdfdf;
+      border-radius: 50%;
+    }
+
+    &:hover,
+    &.active{
+      color: #259de2;
+      border-bottom-color: #259de2;
+
+      &:after{
+        background: #259de2;
+      }
+    }
+  }
+}
+
+.bd-tab-wrap{
+  @include clearfix;
+  width: 400%;
+  transform: translate3d(0, 0, 0);
+  transition: transform .3s;
+}
+
+.bd-tab-block{
+  float: left;
+  width: 25%;
+  height: 1px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  &.active{
+    height: auto;
+  }
+}
+
+.bd-info{
+  position: relative;
+  padding: 25px;
+  margin: 30px 35px 0;
+  background: #f5f5f5;
+  color: #bbb;
+  font-size: 13px;
+  border: 1px solid $colorBorder;
+
+  .bd-info-wrap{
+    @include clearfix;
+
+    &.driver{
+      margin-right: 150px;
+    }
+  }
+
+  .info-img{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    height: 160px;
+  }
+
+  .info-table{
+    float: left;
+    width: 33.33%;
+    min-width: 200px;
+    line-height: 2;
+
+    td:nth-child(1){
+      width: 105px;
+      text-align: right;
+    }
+  }
+
+  .info-history{
+    display: flex;
+    margin-top: 15px;
+    padding-top: 20px;
+    border-top: 1px solid $colorBorder;
+    @include clearfix;
+  }
+
+  .info-history-item{
+    flex: 1;
+    margin: 0 5px;
+    padding: 15px;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
+
+    .info-history-title{
+      margin-bottom: 15px;
+      color: #888;
+      text-align: center;
+    }
+
+    .info-history-list{
+      height: 300px;
+      color: #bbb;
+      line-height: 1.5;
+      overflow-y: auto;
+
+      &.no-data:before{
+        content: "暂无";
+        display: block;
+        height: 300px;
+        color: #ccc;
+        font-size: 28px;
+        line-height: 300px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.bd-position{
+  margin: 15px 35px 0;
+  height: 275px;
+}
+
+.bd-filter{
+  height: 45px;
+  margin-top: 30px;
+  padding-left: 25px;
+  background: #f5f5f5;
+  color: #888;
+  font-size: 14px;
+  line-height: 45px;
+  border: 1px solid $colorBorder;
+
+  .bd-filter-date{
+    float: right;
+    top: 0;
+    right: 0;
+    @include clearfix;
+  }
+
+  .bd-filter-select{
+    float: left;
+    width: 100px;
+    height: 45px;
+  }
+}
+
+.grid-wrap{
+  display: flex;
+
+  .grid-1{
+    flex: 1;
+  }
+
+  .grid-2{
+    flex: 2;
+  }
+
+  .grid-5{
+    flex: 5;
+  }
+}
+
+.bd-chart-wrap{
+  position: relative;
+  height: 250px;
+  margin-top: 15px;
+  padding-top: 5px;
+  background: #fbfbfb;
+  border: 1px solid $colorBorder;
+
+  &:nth-child(2){
+      margin-left: 15px;
+  }
+
+  &.no-border{
+      border: 0;
+  }
+
+  .bd-rank{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 13px;
+
+    .rank-delta{
+      margin-right: 5px;
+      color: #259de2;
+
+      &:before{
+        content: "";
+        float: left;
+        width: 15px;
+        height: 16px;
+        margin-right: 3px;
+        background: url(../../images/data_normal.png?__inline) no-repeat center;
+      }
+
+      &.up:before{
+        background-image: url(../../images/data_up.png?__inline);
+      }
+
+      &.down:before{
+        background-image: url(../../images/data_down.png?__inline);
+      }
+
+      &.hide{
+        display: none;
+      }
+    }
+
+    .rank-total{
+      color: #fe9b00;
+    }
+  }
+}
+
+#mileChart,
+#mileRateChart,
+#incomeChart,
+#incomePerChart,
+#incomeReportChart,
+#incomeReportPie,
+#busiChart,
+#busiReportChart,
+#busiReportPie{
+  height: 100%;
+}
+
+.bd-report{
+  margin-top: 15px;
+  padding: 0 10px 20px;
+  background: #fbfbfb;
+  border: 1px solid $colorBorder;
+
+  table{
+    width: 100%;
+    margin-top: 15px;
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  tr{
+    height: 35px;
+  }
+
+  th,td{
+    border: 1px solid $colorBorder;
+  }
+
+  thead{
+    background: #f6f6f6;
+  }
+
+  tbody{
+
+    td{
+
+      &:nth-child(2n-1){
+        background: #fff;
+      }
+
+      &:nth-child(2n){
+        background: #f9fdfe;
+      }
+    }
+  }
+
+  tfoot{
+    background: #fff;
+    font-weight: bold;
+
+    td:first-child{
+      color: #317ca6;
+    }
+  }
+
+}
+
+.bd-title{
+  height: 50px;
+  color: $colorCompanyFont;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+}

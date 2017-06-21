@@ -1,0 +1,45 @@
+{{#each list}}
+<div class="driver-row-list" data-tid="{{tid}}">
+  <img src="http://img2.yongxt.com/img2/{{defaultImg}}" class="info-img">
+  <div class="driver-right">
+    <table>
+      <tr>
+        <td width="50%" colspan="2" class="info-name">
+          <div>
+            <font>{{driverName}}</font><span class="info-name-type">{{jobType}}</span>
+          </div>
+          <div>
+            <span class="info-explain">{{point}}分</span>
+            <span class="info-explain">{{gender}}</span>
+            <span class="info-explain">{{age}}岁</span>
+            <span class="info-explain">{{driverType}}驾照</span>
+            <span class="info-explain">从业{{workYear}}年</span>
+          </div>
+        </td>
+        <td class="info-tel">{{driverMobile}}</td>
+        <td class="info-state">
+          <span class="info-job">{{status}}</span>
+          {{!-- <span class="info-time">一个星期</span> --}}
+        </td>
+      </tr>
+      <tr class="info-line">
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td class="info-lineLeft">
+          <span class="info-subItem">{{carType}}</span>
+          <span class="info-subItem">{{carYear}}年</span>
+          <span class="info-subItem">{{powerType}}</span>
+          <span class="info-subItem">{{address}}</span>
+        </td>
+        <td class="info-lineMain">&nbsp;</td>
+        <td class="info-lineRight info-date">{{createdTime}}</td>
+        <td>
+          <button class="info-link">邀请</button>
+          <button class="info-btn">{{aStatus}}</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+{{/each}}

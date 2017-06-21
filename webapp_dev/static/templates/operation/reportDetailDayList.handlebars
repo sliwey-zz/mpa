@@ -1,0 +1,34 @@
+<thead>
+    <tr>
+        <th>司机名称</th>
+        <th>车牌号码</th>
+        <th>公司名称</th>
+        <th>收入(元)</th>
+        <th>附加燃油费收入(元)</th>
+        <th>营运里程(KM)</th>
+        <th>空驶里程(KM)</th>
+        <th>上车时间</th>
+        <th>下车时间</th>
+        <th>等候时间(秒)</th>
+        <th>上车地点</th>
+        <th>下车地点</th>
+    </tr>
+</thead>
+<tbody>
+    {{#each list}}
+    <tr>
+        <td>{{driverName}}</td>
+        <td>浙BT{{vehicleNumber}}</td>
+        <td>{{corpName}}</td>
+        <td>{{income}}</td>
+        <td>{{baf}}</td>
+        <td>{{feeDistance}}</td>
+        <td>{{freeDistance}}</td>
+        <td>{{onTime}}</td>
+        <td>{{offTime}}</td>
+        <td>{{waitTime}}</td>
+        <td>{{onLocation}}</td>
+        <td>{{offLocation}}</td>
+    </tr>
+    {{/each}}
+</tbody>

@@ -1,0 +1,34 @@
+.footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $heightFooter;
+    min-width: $minWidth;
+    padding-left: $widthNav;
+    color: #666;
+    background: #dbdbdb;
+    font-size: 13px;
+    line-height: $heightFooter;
+    box-sizing: border-box;
+    transition: .3s;
+
+    &.full{
+        transform: translate3d(0, $heightFooter, 0);
+    }
+
+    &-content{
+        padding-left: 30px;
+    }
+
+    &-links{
+        position: absolute;
+        top: 0;
+        right: 40px;
+    }
+
+    &-link{
+        margin-left: 5px;
+        color: inherit;
+    }
+}

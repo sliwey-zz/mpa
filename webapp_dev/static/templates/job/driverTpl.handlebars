@@ -1,0 +1,41 @@
+{{#each list}}
+<div class="driver-row-list">
+  <img src="http://img2.yongxt.com/img2/{{defaultImg}}" class="info-img">
+  <div class="driver-right">
+    <table>
+      <tr>
+        <td width="35%" class="info-name">
+          <div><font>{{driverName}}</font><span class="info-name-type">{{jobType}}</span></div>
+        </td>
+        <td width="30%" class="info-tel">{{mobile}}</td>
+        <td class="info-state">
+          <span class="info-apply">求职<i>{{findJobTimes}}</i></span>
+          <span class="info-invitation">邀请<i>{{invitationTimes}}</i></span>
+        </td>
+        <td class="info-state">
+          <span class="info-job">{{status}}</span>
+          {{!-- <span class="info-time">一个星期</span> --}}
+        </td>
+      </tr>
+      <tr class="info-line">
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td class="info-lineLeft">
+          <span class="info-explain">{{dispatchMark}}分</span>
+          <span class="info-explain">{{gender}}</span>
+          <span class="info-explain">{{age}}岁</span>
+          <span class="info-explain">{{driverType}}驾照</span>
+          <span class="info-explain">从业{{workYear}}年</span>
+        </td>
+        <td class="info-lineMain info-address">{{switchLocation}}</td>
+        <td class="info-lineRight info-date">{{timeCreated}}</td>
+        <td data-tid="{{tid}}">
+          <button class="info-btn" find-id="{{jfindId}}" jOffer-id="{{jOfferId}}" rsp-id="{{jOfferRspId}}">邀请</button>
+          <button class="info-btn">删除</button>
+        </td>
+      </tr>
+    </table>  
+  </div>
+</div>
+{{/each}}
