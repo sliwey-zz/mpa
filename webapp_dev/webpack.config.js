@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const ROOT_PATH = path.resolve(__dirname);
 const DEV_PATH = ROOT_PATH;
 const BUILD_PATH = path.resolve(ROOT_PATH, '../webapp');
@@ -11,7 +12,8 @@ const config = {
 
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../webapp')
+    path: path.resolve(__dirname, '../webapp'),
+    publicPath: '/'
   },
 
   module: {
@@ -21,11 +23,48 @@ const config = {
         use: [{
           loader: 'html-loader'
         }]
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
+        })
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: 'url-loader?limit=4000'
+      },
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: 'url-loader'
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        use: 'file-loader'
       }
     ]
   },
 
   plugins: [
+
+    new ExtractTextWebpackPlugin({
+      filename: (getPath) => {
+        return getPath('[name].css').replace('/js', '/css');
+      }
+    }),
 
     ...htmlPlugin()
   ]
@@ -36,11 +75,11 @@ function htmlPlugin() {
   const plugins = [];
 
   keys.forEach(key => {
-    // const path = key.replace('_', '/');
+    const path = key.replace(/^static\/js\/(\w+\/\w+)$/g, '$1');
 
     plugins.push(new HtmlWebpackPlugin({
-      filename: `view/${key}.jsp`,
-      template: `./views/${key}.jsp`,
+      filename: `view/${path}.jsp`,
+      template: `./views/${path}.jsp`,
       chunks: [key]
     }))
   })
@@ -54,7 +93,7 @@ function getEntry() {
   const files = glob.sync('./static/js/**/*.js');
 
   files.forEach(file => {
-    const key = file.replace(/^\.\/static\/js\/(\w+\/\w+)\.js$/g, '$1');
+    const key = file.replace(/^\.\/(static\/js\/\w+\/\w+)\.js$/g, '$1');
     entry[key] = file;
   })
 
