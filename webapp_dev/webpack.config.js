@@ -8,7 +8,7 @@ const DEV_PATH = ROOT_PATH;
 const BUILD_PATH = path.resolve(ROOT_PATH, '../webapp');
 
 const config = {
-  entry: getEntry(),
+  entry: Object.assign({}, {}, getEntry()),
 
   output: {
     filename: '[name].js',
@@ -19,7 +19,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.jsp$/,
+        test: /\.(jsp|html)$/,
         use: [{
           loader: 'html-loader'
         }]
@@ -78,9 +78,10 @@ function htmlPlugin() {
     const path = key.replace(/^static\/js\/(\w+\/\w+)$/g, '$1');
 
     plugins.push(new HtmlWebpackPlugin({
-      filename: `view/${path}.jsp`,
+      filename: `WEB-INF/${path}.jsp`,
       template: `./views/${path}.jsp`,
-      chunks: [key]
+      chunks: ['vendor', key],
+      chunksSortMode: 'none'
     }))
   })
 

@@ -10,12 +10,12 @@
     border: 1px solid $colorBorder;
   }
   .ui-select-list-item:hover, .ui-select-list-item.selected{
-    background: $colorGary;
+    background: $colorLink;
   }
 }
 
 .filter-input{
-  width: 100px;
+  width: 190px;
   height: 30px;
   line-height: 30px;
   padding-left: 10px;
@@ -183,6 +183,15 @@
             text-decoration: none;
             margin-right: 10px;   
           }
+
+          .del-input{
+            margin-right: 4px;
+          }
+
+          span{
+            display: inline-block;
+            width: 56px;
+          }
         }
 
         &:hover{
@@ -222,6 +231,7 @@
         background: #fff;
         background-image: url(../../images/job_add.png?__inline)
       }
+
       .delete-btn{
         display: inline-block;
         border: none;
@@ -230,6 +240,15 @@
         margin-left: 15px;
         background: #fff;
         background-image: url(../../images/job_delete.png?__inline)
+      }
+
+      #delBtnBatch{
+        position: relative;
+        top: -1px;
+        left: 6px;
+        color: $colorCompanyFont;
+        font-weight: bold;
+
       }
     }
   }
@@ -409,8 +428,10 @@
 
 .listRow{
   color: #bababa;
+  border-bottom: 1px solid #f0efed;
 
   &-item{
+    cursor: default;
     border: 1px solid #f0efed;
     border-width:1px 1px 0 1px;
     height: 34px;
@@ -423,17 +444,14 @@
           padding:0 12px;
       }
       a{
-          color: $colorLink;
-          text-decoration: none;
+        color: $colorLink;
+        text-decoration: none;
       }
     }
   }
 
-  &-item:last-child{
-    border-bottom: 1px solid #f0efed;
-  }
-
   &-sub{
+    display:none;
     background: #f5faff;
     border: 1px solid #f0efed;
     padding: 12px;
@@ -461,7 +479,16 @@
       clear: both;
       padding-top: 10px;
     }
-  }  
+  }
+}
+
+.msg{
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  line-height: 32px;
+  color: #f00;
+  font-weight: bold;
 }
 
 .publish{
@@ -469,14 +496,27 @@
   margin: auto;
   color: #999;
   font-size: 15px;
-  padding:34px 0 100px 0;
+  padding:40px 0 100px 0;
 
   td{
+    position: relative;
     padding: 0 8px 10px 0; 
   }
 
   &-left{
     text-align: right;
+  }
+
+  &-behalf{
+    text-align: center;
+
+    label{
+      margin: 0 10px;
+    }
+    .msg{
+      top: -6px;
+      margin-left: 70px;
+    }
   }
 
   &-text{
@@ -489,18 +529,20 @@
   }
 
   &-valida{
-    height: 32px;
-    line-height: 32px;
-    width: 160px;
-    border: 1px solid #ddd;
+    height: 30px;
+    border: 1px solid $colorBorder;
     border-radius: 5px;
     padding-left: 10px;
     font-size: 14px;
   }
 
+  &-img{
+    vertical-align: middle;
+  }
+
   .ui-select{
     width: 420px;
-    height: 34px;
+    height: 32px;
   }
 
   select{
@@ -516,22 +558,14 @@
     border-radius: 5px;
     padding: 10px;
   }
-
-  &-toValida{
-    position: relative;
-    top: 1px;
-    left: 10px;
-    width: 118px;
-    height: 36px;
-    line-height: 32px;
-    color: #36a6e5;
-    border-radius: 5px;
-    background: transparent;
-    border: 1px solid #36a6e5;
-  }
-
+  
   &-send{
     text-align: center;
+
+    .msg{
+      top: 20px;
+      left: 42%;
+    }
   }
 
   &-sendBtn{
@@ -544,14 +578,6 @@
     border: none;
     margin-top: 70px;
   }
-}
-
-#msg{
-  position: absolute;
-  left: 50%;
-  margin-left: 250px;
-  line-height: 34px;
-  color: #f00;
 }
 
 .driver{
@@ -725,6 +751,10 @@
     background-repeat: no-repeat;
     background-position: center left;
     padding-left: 20px; 
+    max-width: 205px;
+    table-layout: fixed; 
+    word-break: break-all; 
+    overflow: hidden;
   }
 
   .info-date{
@@ -757,7 +787,17 @@
   }
 }
 
+.popup-content{
+  text-align: center;
+  font-size: 15px;
+  color: #f00;
+  font-weight: bold;
+}
+
 .pubListPop{
+  text-align: left;
+  font-weight: normal;
+  font-size: 14px;
   padding:18px;
   color: $colorGary;
 
