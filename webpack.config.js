@@ -4,15 +4,15 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const ROOT_PATH = path.resolve(__dirname);
-const DEV_PATH = ROOT_PATH;
-const BUILD_PATH = path.resolve(ROOT_PATH, '../webapp');
+const DEV_PATH = path.resolve(ROOT_PATH, 'src');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
 const config = {
   entry: Object.assign({}, {}, getEntry()),
 
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../webapp'),
+    path: BUILD_PATH,
     publicPath: '/'
   },
 
@@ -75,11 +75,11 @@ function htmlPlugin() {
   const plugins = [];
 
   keys.forEach(key => {
-    const path = key.replace(/^static\/js\/(\w+\/\w+)$/g, '$1');
+    const path = key.replace(/^static\/entries\/(\w+\/\w+)$/g, '$1');
 
     plugins.push(new HtmlWebpackPlugin({
-      filename: `WEB-INF/${path}.jsp`,
-      template: `./views/${path}.jsp`,
+      filename: `views/${path}.html`,
+      template: `src/views/${path}.html`,
       chunks: ['vendor', key],
       chunksSortMode: 'none'
     }))
@@ -91,10 +91,10 @@ function htmlPlugin() {
 
 function getEntry() {
   const entry = {};
-  const files = glob.sync('./static/js/**/*.js');
+  const files = glob.sync('./src/entries/**/*.js');
 
   files.forEach(file => {
-    const key = file.replace(/^\.\/(static\/js\/\w+\/\w+)\.js$/g, '$1');
+    const key = file.replace(/^\.\/src\/(entries\/\w+\/\w+)\.js$/g, 'static/$1');
     entry[key] = file;
   })
 

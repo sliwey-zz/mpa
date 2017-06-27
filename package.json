@@ -4,7 +4,7 @@
   "description": "",
   "main": "fis-conf.js",
   "scripts": {
-    "dev": "rm -rf ../webapp/static/* && webpack -w --config webpack.config.js",
+    "dev": "webpack --config webpack.config.js --colors",
     "publish": "rm -rf ../webapp/static/* && fis3 release prod"
   },
   "author": "",
