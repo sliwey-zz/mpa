@@ -8,10 +8,10 @@ const DEV_PATH = path.resolve(ROOT_PATH, 'src');
 const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
 const config = {
-  entry: Object.assign({}, {}, getEntry()),
+  entry: Object.assign({}, {'static/common/vendor': ['reqwest', 'echarts']}, getEntry()),
 
   output: {
-    filename: '[name].js',
+    filename: process.env.NODE_ENV === 'production' ? '[name]_[chunkhash].js' : '[name].js',
     path: BUILD_PATH,
     publicPath: '/'
   },
@@ -45,7 +45,7 @@ const config = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        use: 'url-loader?limit=4000'
+        use: 'url-loader?limit=4000&name=static/images/[name].[ext]'
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -60,9 +60,13 @@ const config = {
 
   plugins: [
 
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['static/common/vendor', 'static/common/manifest'],
+    }),
+
     new ExtractTextWebpackPlugin({
       filename: (getPath) => {
-        return getPath('[name].css').replace('/js', '/css');
+        return getPath(process.env.NODE_ENV === 'production' ? '[name]_[contenthash].css' : '[name].css').replace('/js', '/css');
       }
     }),
 
@@ -73,6 +77,8 @@ const config = {
 function htmlPlugin() {
   const keys = Object.keys(getEntry());
   const plugins = [];
+  const vendorName = 'static/common/vendor';
+  const manifestName = 'static/common/manifest';
 
   keys.forEach(key => {
     const path = key.replace(/^static\/entries\/(\w+\/\w+)$/g, '$1');
@@ -80,8 +86,14 @@ function htmlPlugin() {
     plugins.push(new HtmlWebpackPlugin({
       filename: `views/${path}.html`,
       template: `src/views/${path}.html`,
-      chunks: ['vendor', key],
-      chunksSortMode: 'none'
+      chunks: [manifestName, vendorName, key],
+      chunksSortMode: (a, b) => {
+        const chunks = [manifestName, vendorName, key];
+        const aIndex = chunks.indexOf(a.names[0]);
+        const bIndex = chunks.indexOf(b.names[0]);
+
+        return aIndex - bIndex;
+      }
     }))
   })
 
@@ -101,6 +113,22 @@ function getEntry() {
   return entry;
 }
 
-
-
 module.exports = config;
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ])
+}
